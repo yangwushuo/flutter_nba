@@ -2,7 +2,7 @@
  * @Author: 杨武硕
  * @Date: 2023-08-10 23:23:39
  * @LastEditors: 杨武硕
- * @LastEditTime: 2023-09-24 00:07:06
+ * @LastEditTime: 2023-09-24 16:53:54
  * @Descripttion: 
  */
 library widgets;
@@ -13,3 +13,4 @@ export './display_title.dart';
 export './video_cover.dart';
 export './new_item.dart';
 export './recommend.dart';
+export './circle_button.dart';

@@ -2,7 +2,7 @@
  * @Author: 杨武硕
  * @Date: 2023-08-08 00:52:28
  * @LastEditors: 杨武硕
- * @LastEditTime: 2023-08-11 00:50:02
+ * @LastEditTime: 2023-09-25 00:52:13
  * @Descripttion: 路由表配置
  */
 import 'package:go_router/go_router.dart';
@@ -34,6 +34,16 @@ class RoutePages {
         path: RoutePathMap.my,
         name: RouteNameMap.my,
         builder: (context, state) => const MyPage(),
+      ),
+      GoRoute(
+        path: RoutePathMap.videoPlay,
+        name: RouteNameMap.videoPlay,
+        builder: (context, state) => const VideoPage(),
+      ),
+      GoRoute(
+        path: RoutePathMap.more,
+        name: RouteNameMap.more,
+        builder: (context, state) => const MorePage(),
       )
     ],
   );

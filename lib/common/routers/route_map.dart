@@ -2,7 +2,7 @@
  * @Author: 杨武硕
  * @Date: 2023-08-08 01:16:55
  * @LastEditors: 杨武硕
- * @LastEditTime: 2023-08-11 00:19:38
+ * @LastEditTime: 2023-09-24 15:43:30
  * @Descripttion: 路由命名
  */
 
@@ -13,6 +13,12 @@ class RouteNameMap {
 
   /// 个人界面
   static const my = "my";
+
+  /// 视频播放
+  static const videoPlay = "video_play";
+
+  /// 更多
+  static const more = "more";
 }
 
 /// 路径路由映射
@@ -22,4 +28,10 @@ class RoutePathMap {
 
   /// 个人界面
   static const my = "/my";
+
+  /// 视频播放
+  static const videoPlay = "/video_play";
+
+  /// 更多
+  static const more = "/more";
 }

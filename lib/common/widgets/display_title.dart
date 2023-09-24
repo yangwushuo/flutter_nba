@@ -7,7 +7,16 @@ class DisplayTitile extends StatelessWidget {
   @required
   final EdgeInsets edge;
 
-  const DisplayTitile({super.key, required this.title, required this.edge});
+  final TextAlign? textAlign;
+
+  final TextStyle? textStyle;
+
+  const DisplayTitile(
+      {super.key,
+      required this.title,
+      required this.edge,
+      this.textAlign,
+      this.textStyle});
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +26,8 @@ class DisplayTitile extends StatelessWidget {
         width: MediaQuery.of(context).size.width,
         child: Text(
           title,
-          textAlign: TextAlign.start,
-          style: Theme.of(context).textTheme.displayLarge,
+          textAlign: textAlign ?? TextAlign.start,
+          style: textStyle ?? Theme.of(context).textTheme.displayLarge,
         ),
       ),
     );

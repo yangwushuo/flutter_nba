@@ -17,11 +17,12 @@ dependencies:
   shared_preferences: ^2.2.0 # 本地存储
   date_format: ^2.0.7 # 日期格式化
   decimal: ^2.3.2 # 精度
-  # fluwx: ^4.2.7 # 微信
   flutter_screenutil: ^5.8.4 # 自适应尺寸
   go_router: ^10.0.0 # 路由管理
   provider: ^6.0.5 # 状态管理
   carousel_slider: ^4.2.1 # 轮播图
+  video_player: ^2.7.2 # 视频播放
+  step_progress_indicator: ^1.0.2 # 进度指示器
 
 dev_dependencies:
   flutter_test:

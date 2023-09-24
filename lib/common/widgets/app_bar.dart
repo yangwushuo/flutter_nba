@@ -2,7 +2,7 @@
  * @Author: 杨武硕
  * @Date: 2023-08-10 23:23:20
  * @LastEditors: 杨武硕
- * @LastEditTime: 2023-09-23 19:26:56
+ * @LastEditTime: 2023-09-24 03:41:39
  * @Descripttion: 创建自定义AppBar组建
  */
 
@@ -75,7 +75,7 @@ class _AppBarWidgetState extends State<MyAppBar> {
       child: Row(
         children: [
           Expanded(
-            child: Align(
+            child: Container(
               alignment: Alignment.centerLeft,
               child: GestureDetector(
                 onTap: widget.leftChildOnTap,

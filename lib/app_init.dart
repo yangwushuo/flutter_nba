@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:nba/common/index.dart';
+import 'package:nba/common/services/index.dart';
 
 /// 应用初始化类
 class AppInit {
@@ -13,5 +14,7 @@ class AppInit {
     await Storage().init();
     // 初始化日志
     await MyLogger.init();
+    //
+    SystemService();
   }
 }

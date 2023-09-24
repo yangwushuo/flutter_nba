@@ -2,7 +2,7 @@
  * @Author: 杨武硕
  * @Date: 2023-09-23 15:18:45
  * @LastEditors: 杨武硕
- * @LastEditTime: 2023-09-24 01:20:32
+ * @LastEditTime: 2023-09-25 00:53:50
  * @Descripttion: 
  */
 import 'package:carousel_slider/carousel_slider.dart';
@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nba/common/index.dart';
+import 'package:nba/common/services/index.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -22,36 +23,72 @@ class _HomePageState extends State<HomePage> {
   /// 主视图垂直滚动控制器
   late ScrollController _bodyScrollController;
 
+  /// 头部新闻滚动控制器
+  late ScrollController _topNewScrollController;
+
   /// 轮播图控制器
   late CarouselController _carouselController;
 
-  /// topbar显示头部新闻缩略图
-  bool _showTopNewThumbnail = false;
+  /// topbar显示头部标题
+  bool _showBarTitle = false;
+
+  /// 显示头部标题内容
+  String _barTitle = "";
 
   /// 主体滚动监听
   void listenBodyScroll() {
     _bodyScrollController.addListener(() {
-      topNews2TopBar();
-      print(_showTopNewThumbnail);
+      topTitle2TopBar();
     });
   }
 
-  // 头部新闻滚动出视图 -> 标题栏显示头部新闻缩略
-  void topNews2TopBar() => setState(() => _bodyScrollController.offset > 120.sp
-      ? _showTopNewThumbnail = true
-      : _showTopNewThumbnail = false);
+  /// 头部新闻滚动监听
+  void listenTopNewScroll() {
+    _topNewScrollController.addListener(() {
+      topNewScrollShock();
+    });
+  }
+
+  void topTitle2TopBar() {
+    setState(
+      () {
+        double offsetValue = _bodyScrollController.offset;
+        offsetValue > 380.sp ? _showBarTitle = true : _showBarTitle = false;
+        if (offsetValue > 380.sp && offsetValue < 640.sp) {
+          _barTitle = "今日必看";
+        } else if (offsetValue > 640.sp && offsetValue < 900.sp) {
+          _barTitle = "热门内容";
+        } else if (offsetValue > 900.sp) {
+          _barTitle = "推荐";
+        } else {
+          _barTitle = "";
+        }
+      },
+    );
+  }
+
+  void topNewScrollShock() {
+    double offsetValue = _topNewScrollController.offset;
+    if ([1, 2, 3, 4, 5, 6, 7, 8, 9, 10].contains(offsetValue / 75.sp)) {
+      // 震动反馈
+      SystemService().shock();
+    }
+  }
 
   @override
   void initState() {
     super.initState();
     _bodyScrollController = ScrollController();
+    _topNewScrollController = ScrollController();
     _carouselController = CarouselController();
     listenBodyScroll();
+    listenTopNewScroll();
   }
 
   @override
   void dispose() {
     _bodyScrollController.dispose();
+    _topNewScrollController.dispose();
     super.dispose();
   }
 
@@ -66,29 +103,20 @@ class _HomePageState extends State<HomePage> {
             AssetsImages.logo_nba,
           ),
         ),
+        leftChildOnTap: context.pop,
         centerChild: AnimatedSlide(
-          offset: _showTopNewThumbnail ? Offset(0, 0) : Offset(0, -2),
-          duration: const Duration(milliseconds: 200),
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: 10,
-            itemBuilder: (context, index) {
-              return Padding(
-                padding: EdgeInsets.all(10.sp),
-                child: ClipOval(
-                  child: Image.network(
-                    'https://picsum.photos/200',
-                    width: 28.sp,
-                    height: 28.sp,
-                    fit: BoxFit.contain,
-                  ),
-                ),
-              );
-            },
+          offset: _showBarTitle ? const Offset(0, 0) : const Offset(0, -2),
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.linear,
+          child: DisplayTitile(
+            title: _barTitle,
+            textAlign: TextAlign.center,
+            textStyle:
+                Theme.of(context).textTheme.displayLarge?.copyWith(height: 1),
+            edge: EdgeInsets.only(bottom: 0.sp, left: 0.sp),
           ),
         ),
         centerChildOnTap: () => _bodyScrollController.jumpTo(0), // 跳回顶部
-        leftChildOnTap: context.pop,
         rightChild: Padding(
           padding: EdgeInsets.all(10.sp),
           child: Icon(
@@ -97,6 +125,7 @@ class _HomePageState extends State<HomePage> {
             size: 20.sp,
           ),
         ),
+        rightChildOnTap: toMore,
       ),
       body: SafeArea(
         child: Padding(
@@ -115,12 +144,14 @@ class _HomePageState extends State<HomePage> {
                         width: MediaQuery.of(context).size.width,
                         height: 120.sp,
                         child: ListView.builder(
+                          controller: _topNewScrollController,
                           scrollDirection: Axis.horizontal,
                           itemCount: 10,
                           itemBuilder: (context, index) {
-                            return const TopNew(
-                              imageUrl: 'https://picsum.photos/200',
+                            return TopNew(
+                              imageUrl: 'https://api.dujin.org/bing/1366.php',
                               title: "212adfasdfasdfasdfasdfadsfadsfas",
+                              onTap: toVideoPlay,
                             );
                           },
                         ),
@@ -156,7 +187,7 @@ class _HomePageState extends State<HomePage> {
                                 children: [
                                   Positioned.fill(
                                     child: Image.network(
-                                      'https://picsum.photos/200',
+                                      'https://api.dujin.org/bing/1366.php',
                                       fit: BoxFit.cover,
                                     ),
                                   ),
@@ -192,9 +223,10 @@ class _HomePageState extends State<HomePage> {
                         child: ListView.builder(
                           scrollDirection: Axis.horizontal,
                           itemCount: 10,
-                          itemBuilder: (context, index) => const VideoCover(
-                            coverUrl: 'https://picsum.photos/200',
+                          itemBuilder: (context, index) => VideoCover(
+                            coverUrl: 'https://api.dujin.org/bing/1366.php',
                             title: "212adfasdfasdfasdfasdfadsfadsfas",
+                            onTap: toVideoPlay,
                           ),
                         ),
                       ),
@@ -242,7 +274,7 @@ class _HomePageState extends State<HomePage> {
                           itemBuilder: (context, index) {
                             return const Recommend(
                               recommendType: RecommendType.VIDEO,
-                              coverUrl: 'https://picsum.photos/200',
+                              coverUrl: 'https://api.dujin.org/bing/1366.php',
                               title: "手感来了挡不住？乔丹耸肩摆手庆祝",
                               time: 100,
                             );
@@ -266,4 +298,15 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-extension _HomePageStateExtension on _HomePageState {}
+/// 逻辑分离
+extension _HomePageStateExtension on _HomePageState {
+  // 视频播放
+  void toVideoPlay() {
+    context.push(RoutePathMap.videoPlay);
+  }
+
+  // 更多
+  void toMore() {
+    context.push(RoutePathMap.more);
+  }
+}

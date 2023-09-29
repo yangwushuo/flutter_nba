@@ -2,7 +2,7 @@
  * @Author: 杨武硕
  * @Date: 2023-09-23 17:53:43
  * @LastEditors: 杨武硕
- * @LastEditTime: 2023-09-25 00:43:09
+ * @LastEditTime: 2023-09-30 02:29:12
  * @Descripttion: 
  */
 import 'package:flutter/material.dart';
@@ -44,8 +44,8 @@ class TopNew extends StatelessWidget {
                 child: ClipOval(
                   child: Image.network(
                     imageUrl,
-                    width: 65.sp,
-                    height: 65.sp,
+                    width: 60.sp,
+                    height: 60.sp,
                     fit: BoxFit.cover,
                   ),
                 ),

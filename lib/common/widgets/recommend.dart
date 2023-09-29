@@ -2,17 +2,12 @@
  * @Author: 杨武硕
  * @Date: 2023-09-24 00:39:03
  * @LastEditors: 杨武硕
- * @LastEditTime: 2023-09-24 01:15:36
+ * @LastEditTime: 2023-09-30 02:10:18
  * @Descripttion: 
  */
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nba/common/index.dart';
-
-enum RecommendType {
-  VIDEO,
-  ARTICLE,
-}
 
 class Recommend extends StatelessWidget {
   @required
@@ -40,7 +35,7 @@ class Recommend extends StatelessWidget {
       width: MediaQuery.of(context).size.width / 2,
       height: 200.sp,
       decoration: const BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(10)),
+        borderRadius: BorderRadius.all(Radius.circular(8)),
       ),
       clipBehavior: Clip.hardEdge,
       child: Column(

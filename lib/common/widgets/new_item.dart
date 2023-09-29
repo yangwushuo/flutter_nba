@@ -2,7 +2,7 @@
  * @Author: 杨武硕
  * @Date: 2023-09-23 23:59:20
  * @LastEditors: 杨武硕
- * @LastEditTime: 2023-09-24 00:35:53
+ * @LastEditTime: 2023-09-30 02:12:22
  * @Descripttion: 
  */
 
@@ -41,6 +41,9 @@ class NewItem extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
+            width: 14,
+            height: 20,
+            alignment: Alignment.center,
             padding: const EdgeInsets.all(2),
             decoration: BoxDecoration(
                 color: Theme.of(context).colorScheme.primary,

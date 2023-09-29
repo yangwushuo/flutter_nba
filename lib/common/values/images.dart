@@ -2,7 +2,7 @@
  * @Author: 杨武硕
  * @Date: 2023-08-12 01:09:45
  * @LastEditors: 杨武硕
- * @LastEditTime: 2023-09-23 17:16:36
+ * @LastEditTime: 2023-09-27 23:24:27
  * @Descripttion: 
  */
 
@@ -37,4 +37,7 @@ class AssetsImages {
 
   /// nba logo
   static const logo_nba = "assets/images/3x/logo_nba.png";
+
+  /// 刷新篮球icon
+  static const basketball_icon = "assets/images/3x/basketball_icon.png";
 }

@@ -2,7 +2,7 @@
  * @Author: 杨武硕
  * @Date: 2023-08-06 23:54:33
  * @LastEditors: 杨武硕
- * @LastEditTime: 2023-09-24 01:21:53
+ * @LastEditTime: 2023-09-30 01:30:16
  * @Descripttion: 
  */
 import 'package:flutter/material.dart';
@@ -48,6 +48,7 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
+        bottom: false,
         child: PageView(
           physics: const NeverScrollableScrollPhysics(),
           controller: _pageController,

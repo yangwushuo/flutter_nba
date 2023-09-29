@@ -23,6 +23,7 @@ dependencies:
   carousel_slider: ^4.2.1 # 轮播图
   video_player: ^2.7.2 # 视频播放
   step_progress_indicator: ^1.0.2 # 进度指示器
+  easy_refresh: ^3.3.2+1 # 下拉刷新
 
 dev_dependencies:
   flutter_test:

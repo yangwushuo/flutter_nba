@@ -2,7 +2,7 @@
  * @Author: 杨武硕
  * @Date: 2023-09-24 15:40:51
  * @LastEditors: 杨武硕
- * @LastEditTime: 2023-09-25 00:39:56
+ * @LastEditTime: 2023-09-30 02:42:56
  * @Descripttion: 
  */
 import 'package:flutter/material.dart';
@@ -183,6 +183,17 @@ class _VideoPageState extends State<VideoPage> {
                                 _videoPlayerController.value.volume == 0
                                     ? Icons.volume_off_outlined
                                     : Icons.volume_up_outlined,
+                                weight: 400,
+                                size: 20.sp,
+                              ),
+                              size: 40.sp,
+                              edge: EdgeInsets.only(bottom: 8.sp),
+                              backgroundColor: Colors.white30,
+                              onTap: changeVideoVolume,
+                            ),
+                            CircleButton(
+                              icon: Icon(
+                                Icons.fullscreen_outlined,
                                 weight: 400,
                                 size: 20.sp,
                               ),

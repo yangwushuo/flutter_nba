@@ -37,6 +37,7 @@ class MyApp extends StatelessWidget {
           theme: darkThemeData,
           // TODO darkTheme: darkThemeData,
           routerConfig: RoutePages.router,
+          
         );
       },
     );

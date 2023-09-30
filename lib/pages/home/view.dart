@@ -2,7 +2,7 @@
  * @Author: 杨武硕
  * @Date: 2023-09-23 15:18:45
  * @LastEditors: 杨武硕
- * @LastEditTime: 2023-09-30 02:44:11
+ * @LastEditTime: 2023-09-30 13:33:16
  * @Descripttion: 
  */
 import 'dart:async';
@@ -38,7 +38,7 @@ class _HomePageState extends State<HomePage>
   /// 旋转控制器
   late AnimationController _rotationController;
 
-  /// 刷新旋转角度
+  /// TODO:模拟
   int _count = 0;
 
   /// topbar显示头部标题
@@ -103,10 +103,10 @@ class _HomePageState extends State<HomePage>
             curve: Curves.linear), // 跳回顶部
         rightChild: Padding(
           padding: EdgeInsets.all(10.sp),
-          child: Icon(
-            Icons.more_horiz,
+          child: Image.asset(
+            AssetsImages.more,
+            width: 20.sp,
             color: Theme.of(context).colorScheme.primary,
-            size: 20.sp,
           ),
         ),
         rightChildOnTap: _toMore,

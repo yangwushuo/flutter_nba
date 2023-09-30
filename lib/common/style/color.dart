@@ -2,7 +2,7 @@
  * @Author: 杨武硕
  * @Date: 2023-08-13 16:18:29
  * @LastEditors: 杨武硕
- * @LastEditTime: 2023-09-24 00:12:09
+ * @LastEditTime: 2023-09-30 18:06:50
  * @Descripttion: 系统主题配置
  */
 import 'package:flutter/material.dart';
@@ -132,6 +132,21 @@ ThemeData darkThemeData = ThemeData(
       color: darkColorScheme.primaryContainer,
       letterSpacing: -2,
       height: 1,
+    ),
+  ),
+  textButtonTheme: TextButtonThemeData(
+    style: ButtonStyle(
+      padding: MaterialStateProperty.all(const EdgeInsets.all(2)),
+      backgroundColor: MaterialStateProperty.all(
+        darkColorScheme.outlineVariant,
+      ),
+    ),
+  ),
+  buttonTheme: ButtonThemeData(
+    buttonColor: Colors.blue, // 按钮背景颜色
+    textTheme: ButtonTextTheme.primary, // 文本颜色
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(10.0), // 按钮形状
     ),
   ),
 );

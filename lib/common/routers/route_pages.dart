@@ -2,7 +2,7 @@
  * @Author: 杨武硕
  * @Date: 2023-08-08 00:52:28
  * @LastEditors: 杨武硕
- * @LastEditTime: 2023-09-25 00:52:13
+ * @LastEditTime: 2023-09-30 13:52:44
  * @Descripttion: 路由表配置
  */
 import 'package:go_router/go_router.dart';
@@ -43,7 +43,9 @@ class RoutePages {
       GoRoute(
         path: RoutePathMap.more,
         name: RouteNameMap.more,
-        builder: (context, state) => const MorePage(),
+        builder: (context, state) => MorePage(
+          hint: (state.extra ?? '') as String,
+        ),
       )
     ],
   );

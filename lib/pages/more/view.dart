@@ -1,3 +1,10 @@
+/*
+ * @Author: 杨武硕
+ * @Date: 2023-09-25 00:49:57
+ * @LastEditors: 杨武硕
+ * @LastEditTime: 2023-09-30 18:16:59
+ * @Descripttion: 
+ */
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -5,7 +12,9 @@ import 'package:nba/common/index.dart';
 import 'package:nba/pages/more/widgets/more_item.dart';
 
 class MorePage extends StatelessWidget {
-  const MorePage({super.key});
+  final String? hint;
+
+  const MorePage({super.key, this.hint});
 
   @override
   Widget build(BuildContext context) {
@@ -14,11 +23,20 @@ class MorePage extends StatelessWidget {
         backgroundColor: Colors.transparent,
         leftChild: Padding(
           padding: EdgeInsets.all(10.sp),
-          child: Image.asset(
-            AssetsImages.leftArrow3x,
-            width: 18.sp,
-            height: 18.sp,
-            color: Theme.of(context).colorScheme.primary,
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Image.asset(
+                AssetsImages.leftArrow3x,
+                width: 18.sp,
+                height: 18.sp,
+                color: Theme.of(context).colorScheme.primary,
+              ),
+              Text(
+                hint ?? '',
+                style: Theme.of(context).textTheme.titleSmall,
+              )
+            ],
           ),
         ),
         leftChildOnTap: context.pop,

@@ -2,7 +2,7 @@
  * @Author: 杨武硕
  * @Date: 2023-08-12 01:09:45
  * @LastEditors: 杨武硕
- * @LastEditTime: 2023-09-27 23:24:27
+ * @LastEditTime: 2023-09-30 13:28:11
  * @Descripttion: 
  */
 
@@ -40,4 +40,13 @@ class AssetsImages {
 
   /// 刷新篮球icon
   static const basketball_icon = "assets/images/3x/basketball_icon.png";
+
+  /// 我的页面背景
+  static const my_background = "assets/images/3x/my_background.jpeg";
+
+  /// 更多
+  static const more = "assets/images/3x/more.png";
+
+  /// 默认头像
+  static const default_avatar = "assets/images/3x/default_avatar.png";
 }

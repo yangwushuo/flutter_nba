@@ -1,8 +1,8 @@
-# flutter_nba  flutter仿nba app
+# flutter学习高仿篮球nba app
 
 ### 简介
 
-做为一个痴迷的球迷也是一名国际搬运工，日常使用flutter进行跨平台开发，闲来有点空时间来写一个仿nba app的应用，即是打磨自己也为flutter爱好者提供取其精华去其糟粕的机会。
+日常使用flutter进行跨平台开发，闲来有点空时间来写一个仿nba app的应用。
 
 ### 页面展示
 

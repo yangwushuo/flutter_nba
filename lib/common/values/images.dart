@@ -2,7 +2,7 @@
  * @Author: 杨武硕
  * @Date: 2023-08-12 01:09:45
  * @LastEditors: 杨武硕
- * @LastEditTime: 2023-09-30 13:28:11
+ * @LastEditTime: 2023-10-04 17:35:52
  * @Descripttion: 
  */
 
@@ -49,4 +49,21 @@ class AssetsImages {
 
   /// 默认头像
   static const default_avatar = "assets/images/3x/default_avatar.png";
+}
+
+/// logo
+class AssetsLogoImages {
+  /// 森林狼
+  static const minnesota_timberwolves =
+      "assets/images/logo/minnesota_timberwolves.png";
+
+  /// 独行侠
+  static const dallas_mavericks = "assets/images/logo/dallas_mavericks.png";
+
+  /// 湖人
+  static const los_angeles_lakers = "assets/images/logo/los_angeles_lakers.png";
+
+  /// 勇士
+  static const golden_state_warriors =
+      "assets/images/logo/golden_state_warriors.png";
 }

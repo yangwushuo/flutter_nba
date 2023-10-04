@@ -2,7 +2,7 @@
  * @Author: 杨武硕
  * @Date: 2023-08-10 23:23:20
  * @LastEditors: 杨武硕
- * @LastEditTime: 2023-09-24 03:41:39
+ * @LastEditTime: 2023-10-01 02:57:03
  * @Descripttion: 创建自定义AppBar组建
  */
 
@@ -36,6 +36,9 @@ class MyAppBar extends StatefulWidget implements PreferredSizeWidget {
   /// 右击点击事件
   final GestureTapCallback? rightChildOnTap;
 
+  /// bottom
+  final PreferredSizeWidget? bottom;
+
   const MyAppBar({
     super.key,
     this.backgroundColor = Colors.white,
@@ -45,6 +48,7 @@ class MyAppBar extends StatefulWidget implements PreferredSizeWidget {
     this.leftChildOnTap,
     this.centerChildOnTap,
     this.rightChildOnTap,
+    this.bottom,
   });
 
   @override
@@ -66,42 +70,50 @@ class _AppBarWidgetState extends State<MyAppBar> {
     var topSafeArea = MediaQuery.of(context).padding.top;
 
     return Container(
-      padding: EdgeInsets.only(top: topSafeArea.sp, left: 16.sp, right: 16.sp),
-      width: double.infinity,
-      height: topSafeArea.sp + AppSpace.topAppBarHeight.sp,
+      padding: EdgeInsets.only(
+          top: topSafeArea.sp, left: 16.sp, right: 16.sp, bottom: 0),
+      width: MediaQuery.of(context).size.width,
+      height: topSafeArea.sp +
+          AppSpace.topAppBarHeight.sp +
+          (widget.bottom?.preferredSize.height.toDouble().sp ?? 0),
       decoration: BoxDecoration(
         color: widget.backgroundColor,
       ),
-      child: Row(
+      child: Column(
         children: [
-          Expanded(
-            child: Container(
-              alignment: Alignment.centerLeft,
-              child: GestureDetector(
-                onTap: widget.leftChildOnTap,
-                child: widget.leftChild,
+          Row(
+            children: [
+              Expanded(
+                child: Container(
+                  alignment: Alignment.centerLeft,
+                  child: GestureDetector(
+                    onTap: widget.leftChildOnTap,
+                    child: widget.leftChild ?? const SizedBox(),
+                  ),
+                ),
               ),
-            ),
-          ),
-          Expanded(
-            flex: 2,
-            child: Align(
-              alignment: Alignment.center,
-              child: GestureDetector(
-                onTap: widget.centerChildOnTap,
-                child: widget.centerChild,
+              Expanded(
+                flex: 2,
+                child: Align(
+                  alignment: Alignment.center,
+                  child: GestureDetector(
+                    onTap: widget.centerChildOnTap,
+                    child: widget.centerChild ?? const SizedBox(),
+                  ),
+                ),
               ),
-            ),
-          ),
-          Expanded(
-            child: Align(
-              alignment: Alignment.centerRight,
-              child: GestureDetector(
-                onTap: widget.rightChildOnTap,
-                child: widget.rightChild,
+              Expanded(
+                child: Align(
+                  alignment: Alignment.centerRight,
+                  child: GestureDetector(
+                    onTap: widget.rightChildOnTap,
+                    child: widget.rightChild ?? const SizedBox(),
+                  ),
+                ),
               ),
-            ),
+            ],
           ),
+          widget.bottom ?? const SizedBox()
         ],
       ),
     );

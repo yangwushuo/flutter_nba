@@ -2,7 +2,7 @@
  * @Author: 杨武硕
  * @Date: 2023-09-23 15:18:45
  * @LastEditors: 杨武硕
- * @LastEditTime: 2023-09-30 13:33:16
+ * @LastEditTime: 2023-10-01 02:06:31
  * @Descripttion: 
  */
 import 'dart:async';
@@ -79,11 +79,9 @@ class _HomePageState extends State<HomePage>
     return Scaffold(
       appBar: MyAppBar(
         backgroundColor: Colors.transparent,
-        leftChild: Padding(
-          padding: EdgeInsets.all(10.sp),
-          child: Image.asset(
-            AssetsImages.logo_nba,
-          ),
+        leftChild: Image.asset(
+          AssetsImages.logo_nba,
+          height: AppSpace.topAppBarHeight.sp,
         ),
         leftChildOnTap: context.pop,
         centerChild: AnimatedSlide(

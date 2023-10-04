@@ -9,6 +9,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
   cupertino_icons: ^1.0.2
   flutter_native_splash: ^2.3.1 # 开屏图片
   dio: ^5.3.2 # 网络请求
@@ -24,6 +26,9 @@ dependencies:
   video_player: ^2.7.2 # 视频播放
   step_progress_indicator: ^1.0.2 # 进度指示器
   easy_refresh: ^3.3.2+1 # 下拉刷新
+  flutter_holo_date_picker: ^1.1.2+1 # 日期选择
+  focused_menu: ^1.0.5 # 菜单
+  uuid: ^4.1.0 # weiyi
 
 dev_dependencies:
   flutter_test:
@@ -49,6 +54,7 @@ flutter:
     - assets/images/1x/
     - assets/images/2x/
     - assets/images/3x/
+    - assets/images/logo/
   fonts:
     - family: you_she
       fonts:
